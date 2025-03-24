@@ -4,12 +4,8 @@ const app = express();
 
 const PORT = process.env.PORT || 10000;
 
-// Ensure we're serving from the correct directory
-const publicPath = path.join(__dirname, 'public');
-console.log('Serving static files from:', publicPath);
-
-// Serve static files from the public directory
-app.use(express.static(publicPath));
+// Serve static files from the root directory
+app.use(express.static(__dirname));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -19,7 +15,7 @@ app.use((err, req, res, next) => {
 
 // Serve index.html for all routes with error handling
 app.get('*', (req, res) => {
-    const indexPath = path.join(publicPath, 'index.html');
+    const indexPath = path.join(__dirname, 'index.html');
     console.log('Attempting to serve:', indexPath);
     
     res.sendFile(indexPath, (err) => {

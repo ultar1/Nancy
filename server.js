@@ -13,6 +13,8 @@ app.use((req, res, next) => {
         res.setHeader('Content-Type', 'text/css');
     } else if (req.url.endsWith('.js')) {
         res.setHeader('Content-Type', 'application/javascript');
+    } else if (req.url.endsWith('.jpeg') || req.url.endsWith('.jpg')) {
+        res.setHeader('Content-Type', 'image/jpeg');
     }
     next();
 });

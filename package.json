@@ -4,8 +4,7 @@
   "description": "Nancy's Birthday Website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "mkdir -p public"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2"

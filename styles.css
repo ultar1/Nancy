@@ -8,6 +8,7 @@ body {
     background: url('https://files.catbox.moe/zvdq86.jpeg') no-repeat center center fixed;
     background-size: cover;
     position: relative;
+    transition: background-color 0.1s ease;
 }
 
 body::before {
@@ -17,7 +18,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -29,10 +30,82 @@ body::before {
 }
 
 .birthday-text {
-    font-size: 4em;
+    font-size: 5em;
     color: #fff;
-    animation: landTitle 2s ease forwards, rainbowGlow 5s linear infinite;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    animation: birthdayFadeIn 4s ease-out forwards,
+               rgbGlow 5s linear infinite;
     margin-bottom: 20px;
+}
+
+@keyframes rgbGlow {
+    0% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+    33% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+    66% { text-shadow: 0 0 20px #0000ff, 0 0 30px #0000ff; }
+    100% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+}
+
+@keyframes birthdayFadeIn {
+    0% { 
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.wishes {
+    perspective: 1000px;
+}
+
+.wishes p {
+    transform-origin: top center;
+    animation: landParagraph 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+    color: #fff;
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.7),
+        0 0 10px rgba(255,255,255,0.5);
+    filter: none;
+}
+
+@keyframes landParagraph {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#clock, #date {
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.7),
+        0 0 15px rgba(255,255,255,0.6);
+    font-weight: 600;
+    filter: none;
+}
+
+.star {
+    animation: floatStar 6s ease-in-out infinite,
+               spinIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+}
+
+@keyframes spinIn {
+    0% {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes rainbowGlow {
@@ -191,4 +264,31 @@ body::before {
     left: 45%;
     animation-delay: 1s, 4.6s;
     color: #7DF9FF; /* Electric Blue */
+}
+
+#date {
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 10px;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    opacity: 0;
+    animation: showDate 1s ease forwards;
+    animation-delay: 4s;
+}
+
+@keyframes showDate {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.music-btn {
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,255,255,0.5);
 }

@@ -31,35 +31,8 @@ body::before {
 .birthday-text {
     font-size: 4em;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(-50px);
     animation: landTitle 2s ease forwards, rainbowGlow 5s linear infinite;
-}
-
-@keyframes landTitle {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateY(-25px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #fff;
-    }
-    to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6;
-    }
+    margin-bottom: 20px;
 }
 
 @keyframes rainbowGlow {
@@ -84,6 +57,13 @@ body::before {
     100% {
         text-shadow: 0 0 10px #9400d3, 0 0 20px #9400d3, 0 0 30px #9400d3;
     }
+}
+
+.wishes p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 
 #clock {

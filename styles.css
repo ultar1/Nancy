@@ -17,20 +17,22 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1;
 }
 
 .container {
-    text-align: center;
-    z-index: 1;
     position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
 }
 
 .birthday-text {
     font-size: 4em;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    margin-bottom: 20px;
     opacity: 0;
     transform: translateY(-50px);
     animation: landTitle 2s ease forwards, rainbowGlow 5s linear infinite;
@@ -85,9 +87,10 @@ body::before {
 }
 
 #clock {
+    font-size: 2em;
     color: #fff;
-    font-size: 1.5em;
     margin-top: 20px;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
     opacity: 0;
     animation: showClock 1s ease forwards;
     animation-delay: 5s;
@@ -132,6 +135,10 @@ body::before {
 }
 
 .wishes p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
     margin: 10px 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
     opacity: 0;

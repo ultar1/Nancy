@@ -4,29 +4,25 @@ const app = express();
 
 const PORT = process.env.PORT || 10000;
 
-// Serve static files from the root directory
+// Serve static files from the current directory
 app.use(express.static(__dirname));
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Error:', err);
-    res.status(500).send('Something broke!');
+// Add correct content type headers
+app.use((req, res, next) => {
+    if (req.url.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css');
+    } else if (req.url.endsWith('.js')) {
+        res.setHeader('Content-Type', 'application/javascript');
+    }
+    next();
 });
 
-// Serve index.html for all routes with error handling
-app.get('*', (req, res) => {
-    const indexPath = path.join(__dirname, 'index.html');
-    console.log('Attempting to serve:', indexPath);
-    
-    res.sendFile(indexPath, (err) => {
-        if (err) {
-            console.error('Error sending file:', err);
-            res.status(404).send('File not found');
-        }
-    });
+// Default route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    console.log('Current directory:', __dirname);
+    console.log(`Server running at http://localhost:${PORT}`);
+    console.log('Serving files from:', __dirname);
 });
